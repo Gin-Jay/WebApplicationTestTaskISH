@@ -9,4 +9,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebApplicationTestTaskISH.Models\WebApplicationTestTaskISH.Models.csproj" />
+    <ProjectReference Include="..\WebApplicationTestTaskISH.Services\WebApplicationTestTaskISH.Services.csproj" />
+  </ItemGroup>
+
 </Project>
