@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTestTaskISH",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTestTaskISH.Models", "WebApplicationTestTaskISH.Models\WebApplicationTestTaskISH.Models.csproj", "{B37B8CA3-520E-4FB0-9EE6-7A66F97F2130}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTestTaskISH.Services", "WebApplicationTestTaskISH.Services\WebApplicationTestTaskISH.Services.csproj", "{93ED5B04-31E2-4858-BB3F-C6D805635132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTestTaskISH.Services", "WebApplicationTestTaskISH.Services\WebApplicationTestTaskISH.Services.csproj", "{93ED5B04-31E2-4858-BB3F-C6D805635132}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

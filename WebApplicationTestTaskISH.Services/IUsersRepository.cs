@@ -8,5 +8,6 @@ namespace WebApplicationTestTaskISH.Services
     public interface IUsersRepository
     {
         IEnumerable<UserModel> GetAllUsers();
+        UserModel GetUser(int id);
     }
 }

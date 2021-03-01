@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WebApplicationTestTaskISH.Models;
 
@@ -43,6 +44,11 @@ namespace WebApplicationTestTaskISH.Services
         public IEnumerable<UserModel> GetAllUsers()
         {
             return _usersList;
+        }
+
+        public UserModel GetUser(int id)
+        {
+            return _usersList.FirstOrDefault(x => x.Id == id);
         }
     }
 }
