@@ -9,5 +9,6 @@ namespace WebApplicationTestTaskISH.Services
     {
         IEnumerable<UserModel> GetAllUsers();
         UserModel GetUser(int id);
+        UserModel Update(UserModel updatedUser);
     }
 }

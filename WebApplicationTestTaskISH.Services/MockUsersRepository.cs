@@ -50,5 +50,20 @@ namespace WebApplicationTestTaskISH.Services
         {
             return _usersList.FirstOrDefault(x => x.Id == id);
         }
+
+        public UserModel Update(UserModel updatedUser)
+        {
+            UserModel user = _usersList.FirstOrDefault(x => x.Id == updatedUser.Id);
+
+            if (user != null)
+            {
+                user.Name = updatedUser.Name;
+                user.Email = updatedUser.Email;
+                user.Role = updatedUser.Role;
+                user.PhotoPath = updatedUser.PhotoPath;
+            }
+
+            return user;
+        }
     }
 }

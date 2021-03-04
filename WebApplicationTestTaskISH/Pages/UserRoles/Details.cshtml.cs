@@ -20,9 +20,14 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
 
         public UserModel User { get; private set; }
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             User = _usersRepository.GetUser(id);
+
+            if (User == null)
+                return RedirectToPage("/NotFound");
+
+            return Page();
         }
     }
 }

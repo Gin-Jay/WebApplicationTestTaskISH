@@ -25,7 +25,7 @@
 
                     <div class="card-footer text-center">
                         <a asp-page="/UserRoles/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">Подробности</a>
-                        <a href="#" class="btn btn-primary m-1 buttonShadow">Редактировать</a>
+                        <a asp-page="/UserRoles/Edit" asp-route-ID="@item.Id" class="btn btn-primary m-1 buttonShadow">Редактировать</a>
                         <a href="#" class="btn btn-danger m-1 buttonShadow">Удалить</a>
                     </div>
                 </div>

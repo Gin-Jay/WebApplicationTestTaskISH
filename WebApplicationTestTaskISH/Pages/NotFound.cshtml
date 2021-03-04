@@ -1,0 +1,18 @@
+﻿@page
+@model WebApplicationTestTaskISH.Pages.NotFoundModel
+@{
+    ViewData["Title"] = "Not Found";
+}
+
+<div class="row">
+    <div class="col text-center">
+        <img src="/images/NotFound.png" alt="Page Not Found"/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <h1>Ресурс, который вы ищете, не найден.</h1>
+        <a asp-page="/UserRoles/Users" class="btn btn-primary">Вернуться на страницу пользователей</a>
+    </div>
+</div>
