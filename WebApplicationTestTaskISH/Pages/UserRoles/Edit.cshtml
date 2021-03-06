@@ -1,4 +1,4 @@
-﻿@page "{id}"
+﻿@page "{id}/{handler?}"
 @model WebApplicationTestTaskISH.Pages.UserRoles.EditModel
 @{
     ViewData["Title"] = "Edit user";
@@ -6,8 +6,31 @@
     var photoPath = $"/images/{Model.User.PhotoPath ?? "noimage.png"}";
 }
 
+<form method="post" asp-page-handler="UpdateNotificationPreferences">
+    <div class="row text-center notifyBlock">
+        <div class="col form-check">
+            <h1>Настройки уведомлений</h1>
+            <input asp-for="Notify" class="form-check-input" />
+            <label asp-for="Notify" class="form-check-label">
+                Уведомлять на email, когда профиль измененён
+            </label><br />
+
+            <button type="submit" class="btn btn-primary text-center">Обновить настройки уведомлений</button>
+
+            @if (!string.IsNullOrWhiteSpace(Model.Message))
+            {
+                <div class="alert alert-success">
+                    <p class="p-3 mt-2">@Model.Message</p>
+                </div>
+            }
+
+        </div>
+    </div>
+</form>
+<hr />
+
 <!--Создаём форму редактирования-->
-<form method="post" class="mt-3" enctype="multipart/form-data">
+<form method="post" asp-page-handler="OnPost" class="mt-3" enctype="multipart/form-data">
     <!--Создаём скрытое поле для параметра ID-->
     <input type="hidden" asp-for="User.Id" />
     <input type="hidden" asp-for="User.PhotoPath" />

@@ -4,6 +4,13 @@
     ViewData["Title"] = "Users";
 }
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
 <h1>Users</h1>
 @*<h3>Всего пользователей: @Model.Users.Count()</h3>*@
 

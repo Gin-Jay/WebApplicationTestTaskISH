@@ -28,6 +28,10 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
         [BindProperty]
         public IFormFile Photo { get; set; }
 
+        [BindProperty]
+        public bool Notify { get; set; }
+        public string Message { get; set; }
+
         public IActionResult OnGet(int id)
         {
             User = _usersRepository.GetUser(id);
@@ -53,7 +57,20 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
             }
 
             User = _usersRepository.Update(user);
+
+            TempData["SuccessMessage"] = $"Обновление профиля {User.Name} прошло успешно!";
+
             return RedirectToPage("Users");
+        }
+
+        public void OnPostUpdateNotificationPreferences(int id)
+        {
+            if (Notify)
+                Message = "Спасибо, что включили оповещения";
+            else
+                Message = "Оповещения выключены";
+
+            User = _usersRepository.GetUser(id);
         }
 
         private string ProcessUploadedFile()
