@@ -33,9 +33,12 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
         public bool Notify { get; set; }
         public string Message { get; set; }
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int? id)
         {
-            User = _usersRepository.GetUser(id);
+            if (id.HasValue)
+                User = _usersRepository.GetUser(id.Value);
+            else
+                User = new UserModel();
 
             if (User == null)
                 return RedirectToPage("/NotFound");
@@ -59,9 +62,16 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
                     User.PhotoPath = ProcessUploadedFile();
                 }
 
-                User = _usersRepository.Update(User);
-
-                TempData["SuccessMessage"] = $"Обновление профиля {User.Name} прошло успешно!";
+                if (User.Id > 0)
+                {
+                    User = _usersRepository.Update(User);
+                    TempData["SuccessMessage"] = $"Обновление профиля {User.Name} прошло успешно!";
+                }
+                else
+                {
+                    User = _usersRepository.Add(User);
+                    TempData["SuccessMessage"] = $"Добавление профиля {User.Name} прошло успешно!";
+                }
 
                 return RedirectToPage("Users");
             }

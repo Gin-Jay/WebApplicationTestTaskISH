@@ -41,6 +41,13 @@ namespace WebApplicationTestTaskISH.Services
             };
         }
 
+        public UserModel Add(UserModel newUser)
+        {
+            newUser.Id = _usersList.Max(x => x.Id) + 1;
+            _usersList.Add(newUser);
+            return newUser;
+        }
+
         public IEnumerable<UserModel> GetAllUsers()
         {
             return _usersList;
