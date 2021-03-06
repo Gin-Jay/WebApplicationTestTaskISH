@@ -23,6 +23,7 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
             _webHostEnvironment = webHostEnvironment;
         }
 
+        [BindProperty]
         public UserModel User { get; set; }
 
         [BindProperty]
@@ -43,24 +44,29 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
 
         }
 
-        public IActionResult OnPost(UserModel user)
+        public IActionResult OnPost()
         {
-            if (Photo != null)
+            if (ModelState.IsValid)
             {
-                if (user.PhotoPath != null)
+                if (Photo != null)
                 {
-                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", user.PhotoPath);
-                    System.IO.File.Delete(filePath);
+                    if (User.PhotoPath != null)
+                    {
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", User.PhotoPath);
+                        System.IO.File.Delete(filePath);
+                    }
+
+                    User.PhotoPath = ProcessUploadedFile();
                 }
 
-                user.PhotoPath = ProcessUploadedFile();
+                User = _usersRepository.Update(User);
+
+                TempData["SuccessMessage"] = $"Обновление профиля {User.Name} прошло успешно!";
+
+                return RedirectToPage("Users");
             }
 
-            User = _usersRepository.Update(user);
-
-            TempData["SuccessMessage"] = $"Обновление профиля {User.Name} прошло успешно!";
-
-            return RedirectToPage("Users");
+            return Page();
         }
 
         public void OnPostUpdateNotificationPreferences(int id)
