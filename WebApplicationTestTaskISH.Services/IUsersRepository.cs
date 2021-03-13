@@ -11,6 +11,6 @@ namespace WebApplicationTestTaskISH.Services
         UserModel GetUser(int id);
         UserModel Update(UserModel updatedUser);
         UserModel Add(UserModel newUser);
-
+        UserModel Delete(int id);
     }
 }

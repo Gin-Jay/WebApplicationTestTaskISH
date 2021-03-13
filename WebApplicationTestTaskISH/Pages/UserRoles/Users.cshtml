@@ -2,6 +2,7 @@
 @model WebApplicationTestTaskISH.Pages.UserRoles.UsersModel
 @{
     ViewData["Title"] = "Users";
+    ViewData["ShowButtons"] = true;
 }
 
 @if (TempData["SuccessMessage"] != null)
@@ -17,26 +18,8 @@
 <div class="row">
     @foreach (var item in Model.Users)
     {
-        var photoPath = $"/images/{item.PhotoPath ?? "noimage.png"}";
-
         <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card-deck">
-                <div class="card m-3 cardBoxShadow">
-                    <div class="card-header text-center cardHeaderStyle">
-                        <h3>@item.Name</h3>
-                    </div>
-
-                    <div class="card-body text-center cardBodyStyle">
-                        <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true"/>
-                    </div>
-
-                    <div class="card-footer text-center">
-                        <a asp-page="/UserRoles/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">Подробности</a>
-                        <a asp-page="/UserRoles/Edit" asp-route-ID="@item.Id" class="btn btn-primary m-1 buttonShadow">Редактировать</a>
-                        <a href="#" class="btn btn-danger m-1 buttonShadow">Удалить</a>
-                    </div>
-                </div>
-            </div>
+            <partial name="_DisplayUsersPartial" model="item"  view-data="ViewData"/>
         </div>
     }
 </div>

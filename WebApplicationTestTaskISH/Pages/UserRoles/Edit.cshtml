@@ -1,4 +1,4 @@
-﻿@page "{id:min(2)?}/{handler?}"
+﻿@page "{id?}/{handler?}"
 @model WebApplicationTestTaskISH.Pages.UserRoles.EditModel
 @{
     var photoPath = $"/images/{Model.User.PhotoPath ?? "noimage.png"}";

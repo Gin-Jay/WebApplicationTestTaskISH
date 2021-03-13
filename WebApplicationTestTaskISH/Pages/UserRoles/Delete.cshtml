@@ -1,0 +1,37 @@
+﻿@page "{id}"
+@model WebApplicationTestTaskISH.Pages.UserRoles.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+    ViewData["ShowButtons"] = false;
+}
+
+<h1 class="text-center">Подтверждение удаления</h1>
+
+<div class="alert alert-danger">
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 offset-sm-0 offset-md-3 offset-xl-4">
+            <partial name="_DisplayUsersPartial" model="Model.User" view-data="ViewData" />
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 offset-sm-0 offset-md-3 offset-xl-4">
+            <div class="text-center text-secondary">
+                <h4>ID пользователя: <span class="text-primary">@Model.User.Id</span></h4><hr />
+                <h4>Email пользователя: <span class="text-primary">@Model.User.Email</span></h4><hr />
+                <h4>Роль: <span class="text-primary">@Model.User.Role</span></h4><hr />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h5>Вы уверены, что хотите удалить пользователя - @Model.User.Name?</h5>
+
+            <form method="post">
+                <button type="submit" class="btn btn-danger">Да</button>
+                <a class="btn btn-success" asp-page="/UserRoles/Users">Нет</a>
+            </form>
+        </div>
+    </div>
+</div>

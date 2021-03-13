@@ -43,9 +43,21 @@ namespace WebApplicationTestTaskISH.Services
 
         public UserModel Add(UserModel newUser)
         {
-            newUser.Id = _usersList.Max(x => x.Id) + 1;
+            if (_usersList.Count != 0)
+                newUser.Id = _usersList.Max(x => x.Id) + 1;
+            else
+                newUser.Id = 0;
             _usersList.Add(newUser);
             return newUser;
+        }
+
+        public UserModel Delete(int id)
+        {
+            UserModel userToDelete = _usersList.FirstOrDefault(x => x.Id == id);
+            if (userToDelete != null)
+                _usersList.Remove(userToDelete);
+
+            return userToDelete;
         }
 
         public IEnumerable<UserModel> GetAllUsers()
