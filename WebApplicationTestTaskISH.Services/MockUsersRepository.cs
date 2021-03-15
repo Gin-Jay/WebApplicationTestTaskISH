@@ -84,5 +84,20 @@ namespace WebApplicationTestTaskISH.Services
 
             return user;
         }
+
+        public IEnumerable<UsersHeadCount> UsersCountByRole(UserRoles? userRoles)
+        {
+            IEnumerable<UserModel> querry = _usersList;
+
+            if (userRoles.HasValue)
+                querry = querry.Where(x => x.Role == userRoles.Value);
+
+            return querry.GroupBy(x => x.Role)
+                             .Select(x => new UsersHeadCount()
+                             {
+                                 Role = x.Key.Value,
+                                 Count = x.Count()
+                             }).ToList();
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace WebApplicationTestTaskISH.Services
         UserModel Update(UserModel updatedUser);
         UserModel Add(UserModel newUser);
         UserModel Delete(int id);
+        IEnumerable<UsersHeadCount> UsersCountByRole(UserRoles? userRoles);
     }
 }

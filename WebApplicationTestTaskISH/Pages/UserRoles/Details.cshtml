@@ -7,6 +7,13 @@
 
 <div class="row justify-content-center m-3">
     <div class="col col-lg-8">
+        @*@await Component.InvokeAsync("HeadCount", new { userRole = Model.User.Role })*@
+        <vc:head-count user-role="@Model.User.Role"></vc:head-count>
+    </div>
+</div>
+
+<div class="row justify-content-center m-3">
+    <div class="col col-lg-8">
         <div class="card cardBoxShadow">
 
             <div class="card-header cardHeaderStyle text-center">
@@ -18,15 +25,16 @@
                     <div class="col col-lg-9">
                         <h4 class="cardTextLeftFloating">User ID: @Model.User.Id</h4><hr />
                         <h4 class="cardTextLeftFloating">Email: @Model.User.Email</h4><hr />
-                        <h4 class="cardTextLeftFloating">Role:
+                        <h4 class="cardTextLeftFloating">
+                            Role:
                             <span class="text-danger font-weight-bold">
                                 @Model.User.Role
-                            </span>   
+                            </span>
                         </h4><hr />
                     </div>
                     <div class="col col-lg-3">
                         <div style="border-right: 1px solid rgba(0,0,0,.1);">
-                            <img class="card-img-top imageThumbnail border border-primary" style="background-color: #dle7ff" src="@photoPath" asp-append-version="true"/>
+                            <img class="card-img-top imageThumbnail border border-primary" style="background-color: #dle7ff" src="@photoPath" asp-append-version="true" />
                         </div>
                     </div>
                 </div>

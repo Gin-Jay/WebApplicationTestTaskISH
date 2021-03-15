@@ -1,0 +1,19 @@
+﻿@model IEnumerable<UsersHeadCount>
+
+<table class="table table-hover rounded-pill">
+    <thead class="thead-light">
+        <tr>
+            <th>Роль</th>
+            <th>Кол-во пользователей</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Role</td>
+                <td>@item.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
