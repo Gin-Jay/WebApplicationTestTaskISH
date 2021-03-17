@@ -19,7 +19,7 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
         }
 
         [BindProperty]
-        public UserModel User { get; set; }
+        public new UserModel User { get; set; }
 
         public IActionResult OnGet(int id)
         {

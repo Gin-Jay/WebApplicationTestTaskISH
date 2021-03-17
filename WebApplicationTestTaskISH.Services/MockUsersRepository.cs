@@ -43,10 +43,13 @@ namespace WebApplicationTestTaskISH.Services
 
         public UserModel Add(UserModel newUser)
         {
-            if (_usersList.Count != 0)
-                newUser.Id = _usersList.Max(x => x.Id) + 1;
-            else
-                newUser.Id = 0;
+            //ver1
+            //if (_usersList.Count != 0)
+            //    newUser.Id = _usersList.Max(x => x.Id) + 1;
+            //else
+            //    newUser.Id = 0;
+            //newUser.Id = _usersList.Count != 0 ? _usersList.Max(x => x.Id) + 1 : 0; //ver2
+            newUser.Id = (_usersList.Max(x => (int?)x.Id) ?? -1) + 1; //ver3
             _usersList.Add(newUser);
             return newUser;
         }
@@ -68,6 +71,14 @@ namespace WebApplicationTestTaskISH.Services
         public UserModel GetUser(int id)
         {
             return _usersList.FirstOrDefault(x => x.Id == id);
+        }
+
+        public IEnumerable<UserModel> Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return _usersList;
+
+            return _usersList.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()) || x.Email.ToLower().Contains(searchTerm.ToLower()));
         }
 
         public UserModel Update(UserModel updatedUser)

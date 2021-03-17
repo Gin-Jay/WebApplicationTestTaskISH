@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplicationTestTaskISH.Models;
@@ -18,11 +15,13 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
             _db = db;
         }
 
-        public IEnumerable<WebApplicationTestTaskISH.Models.UserModel> Users { get; set; }
+        public IEnumerable<UserModel> Users { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
 
         public void OnGet()
         {
-            Users = _db.GetAllUsers();
+            Users = _db.Search(SearchTerm);
         }
     }
 }

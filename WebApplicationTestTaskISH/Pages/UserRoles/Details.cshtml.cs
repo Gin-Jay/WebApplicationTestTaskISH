@@ -18,7 +18,7 @@ namespace WebApplicationTestTaskISH.Pages.UserRoles
             _usersRepository = usersRepository;
         }
 
-        public UserModel User { get; private set; }
+        public new UserModel User { get; private set; }
 
         public IActionResult OnGet(int id)
         {
